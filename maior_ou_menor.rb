@@ -7,34 +7,51 @@ def da_boas_vindas
     puts "\n"
 end
 
-da_boas_vindas
+def sorteia_numero_secreto
+    puts "Escolha um numero de 0 a 200"
+    sorteado = 175
+    puts "Escolheu o numero, que tal adivinhar nosso numero secreto."
+    puts "\n\n"
+    sorteado
+end
 
-puts "Escolha um numero de 0 a 200"
-numero_secreto = 175
-puts "Escolheu o numero, que tal adivinhar nosso numero secreto."
-puts "\n\n"
+def pede_um_numero(tentativa, limite_de_tentativas)
+    puts "Tentativa " + tentativa.to_s + " de " + limite_de_tentativas.to_s 
+    chute = gets
+    puts "Será que você acertou? O numero que você chutou foi " + chute
+    puts "\n"
+    chute.to_i
+end
+
+def verifica_se_acertou(numero_secreto, chute)
+    acertou = numero_secreto == chute
+    if acertou
+        puts "Parabéns você acertou!"
+        return true
+        else 
+                maior = numero_secreto > chute
+
+            if maior
+                puts "O número é maior"
+                return false
+            else
+                puts "O número é menor"
+                return false
+            end
+    end
+end
+
+da_boas_vindas
+numero_secreto = sorteia_numero_secreto
 
 limite_de_tentativas = 5
 
 for tentativa in 1.. limite_de_tentativas
-
-puts "Tentativa " + tentativa.to_s + " de " + limite_de_tentativas.to_s 
-chute = gets
-puts "Será que você acertou? O numero que você chutou foi " + chute
-puts "\n"
-acertou = numero_secreto == chute.to_i
-
-if acertou
-    puts "Parabéns você acertou!"
-    break
-    else 
-        maior = numero_secreto > chute.to_i
-        if maior
-            puts "O número é maior"
-        else
-            puts "O número é menor"
-        end
-end
+    chute = pede_um_numero(tentativa, limite_de_tentativas)
+    
+    if verifica_se_acertou( numero_secreto, chute)
+        break
+    end
 end
 
 #2.8 2
