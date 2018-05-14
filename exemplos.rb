@@ -58,10 +58,10 @@
 #     puts chute
 # end
 
-nome = gets.strip
-puts "#{nome} tem #{nome.size} total de caractere"
-puts nome.size.to_s + " total de caracteres"
+# nome = gets.strip
+# puts "#{nome} tem #{nome.size} total de caractere"
+# puts nome.size.to_s + " total de caracteres"
 
-puts "Resultado"
-puts nome[6]
+# puts "Resultado"
+# puts nome[6]
 

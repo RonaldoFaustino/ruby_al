@@ -7,9 +7,15 @@ def da_boas_vindas
     puts "\n"
 end
 
-def sorteia_numero_secreto
-    puts "Escolha um numero de 0 a 200"
-    sorteado = 175
+def pede_dificuldade
+    puts "Qual nivel de dificuldade que você deseja jogar (1 -fácil, 5 - Díficil) "
+    dificuldade = gets.to_i
+end
+
+def sorteia_numero_secreto (dificuldade)
+    maximo = ????
+    puts "Escolha um numero de 0 a #{maximo -1}..."
+    sorteado = rand(maximo)
     puts "Escolheu o numero, que tal adivinhar nosso numero secreto."
     puts "\n\n"
     sorteado
@@ -43,7 +49,10 @@ def verifica_se_acertou(numero_secreto, chute)
 end
 
 da_boas_vindas
-numero_secreto = sorteia_numero_secreto
+dificuldade = pede_dificuldade
+numero_secreto = sorteia_numero_secreto dificuldade
+
+pontos_ate_agora = 1000
 
 limite_de_tentativas = 5
 chutes = []
@@ -54,10 +63,15 @@ for tentativa in 1.. limite_de_tentativas
 
     chute = pede_um_numero(chutes, tentativa, limite_de_tentativas)
     chutes << chute
+
+    pontos_a_perder = (chute - numero_secreto).abs / 2.0
+    pontos_ate_agora -= pontos_a_perder
     
     if verifica_se_acertou( numero_secreto, chute)
         break
     end
 end
+
+puts "Você ganhou #{pontos_ate_agora} pontos."
 
 #arrays 10
